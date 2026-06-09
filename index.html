@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Briefing | Zafar — AI Strategist</title>
+  <meta name="description" content="O'zbekiston uchun har kunlik sun'iy intellekt yangiliklari va tahlili. Zafar — AI Strategist." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black:    #0A0A0A;
+      --dark:     #141414;
+      --card:     #1C1C1C;
+      --border:   #2A2A2A;
+      --gold:     #D4A017;
+      --gold-dim: #9A7210;
+      --copper:   #B87333;
+      --text:     #E2E2E2;
+      --muted:    #888;
+      --accent:   #FFB800;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--black);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    /* ── TOP BAR ── */
+    .topbar {
+      background: var(--dark);
+      border-bottom: 1px solid var(--border);
+      padding: 10px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+      color: var(--muted);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .topbar .brand {
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 2px;
+      font-size: 13px;
+    }
+    .topbar .socials a {
+      color: var(--muted);
+      text-decoration: none;
+      margin-left: 16px;
+      transition: color 0.2s;
+    }
+    .topbar .socials a:hover { color: var(--gold); }
+
+    /* ── HERO ── */
+    .hero {
+      padding: 60px 24px 40px;
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .hero .date-badge {
+      display: inline-block;
+      background: var(--gold-dim);
+      color: var(--accent);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      border-radius: 20px;
+      margin-bottom: 24px;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(32px, 5vw, 58px);
+      font-weight: 800;
+      line-height: 1.15;
+      color: #fff;
+      margin-bottom: 16px;
+    }
+    .hero h1 span { color: var(--gold); }
+    .hero .subtitle {
+      font-size: 17px;
+      color: var(--muted);
+      max-width: 560px;
+      margin: 0 auto 40px;
+    }
+    .hero .breaking {
+      background: linear-gradient(135deg, #1C1400, #1C1C1C);
+      border: 1px solid var(--gold-dim);
+      border-radius: 12px;
+      padding: 20px 28px;
+      text-align: left;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+    .hero .breaking .fire { font-size: 28px; flex-shrink: 0; }
+    .hero .breaking .label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: var(--gold);
+      margin-bottom: 6px;
+      text-transform: uppercase;
+    }
+    .hero .breaking p { font-size: 15px; color: var(--text); }
+
+    /* ── MAIN GRID ── */
+    .main {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+    }
+
+    .section-title {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin: 48px 0 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .section-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* ── NEWS CARD ── */
+    .news-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 24px 28px;
+      margin-bottom: 16px;
+      transition: border-color 0.2s, transform 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+    .news-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 3px; height: 100%;
+      background: var(--gold);
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+    .news-card:hover {
+      border-color: var(--gold-dim);
+      transform: translateY(-2px);
+    }
+    .news-card:hover::before { opacity: 1; }
+
+    .card-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+    .card-num {
+      background: var(--gold-dim);
+      color: var(--accent);
+      font-weight: 800;
+      font-size: 12px;
+      width: 28px; height: 28px;
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .card-source {
+      font-size: 11px;
+      color: var(--muted);
+      font-weight: 500;
+      letter-spacing: 0.5px;
+    }
+    .card-source span {
+      color: var(--gold);
+      font-weight: 600;
+    }
+
+    .news-card h3 {
+      font-size: 18px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 10px;
+      line-height: 1.35;
+    }
+    .news-card .body {
+      font-size: 14.5px;
+      color: #B8B8B8;
+      margin-bottom: 14px;
+      line-height: 1.75;
+    }
+    .news-card .insight {
+      background: #111;
+      border-left: 3px solid var(--gold);
+      border-radius: 0 8px 8px 0;
+      padding: 12px 16px;
+      font-size: 13.5px;
+      color: var(--text);
+    }
+    .news-card .insight .tag {
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    /* ── RADAR ── */
+    .radar-card {
+      background: linear-gradient(135deg, #0D1A0D, var(--card));
+      border: 1px solid #1F4D1F;
+      border-radius: 14px;
+      padding: 24px 28px;
+      margin-bottom: 16px;
+    }
+    .radar-card .radar-head {
+      display: flex; align-items: center; gap: 10px;
+      margin-bottom: 14px;
+    }
+    .radar-card .radar-head .icon { font-size: 22px; }
+    .radar-card .radar-head h3 {
+      font-size: 16px; font-weight: 700; color: #6FCF6F;
+    }
+    .radar-card p { font-size: 14.5px; color: #B8B8B8; line-height: 1.75; }
+    .radar-card .stat {
+      display: inline-block;
+      background: #1A3A1A;
+      color: #6FCF6F;
+      font-weight: 700;
+      font-size: 13px;
+      padding: 3px 10px;
+      border-radius: 6px;
+      margin: 4px 4px 4px 0;
+    }
+
+    /* ── INSIGHT BLOCK ── */
+    .insight-block {
+      background: linear-gradient(135deg, #1A1200, var(--card));
+      border: 1px solid var(--gold-dim);
+      border-radius: 14px;
+      padding: 28px;
+      margin-bottom: 16px;
+    }
+    .insight-block .head {
+      display: flex; align-items: center; gap: 10px;
+      margin-bottom: 14px;
+    }
+    .insight-block .head .icon { font-size: 24px; }
+    .insight-block .head h3 {
+      font-size: 16px; font-weight: 700; color: var(--gold);
+    }
+    .insight-block p { font-size: 15px; color: #C8C8C8; line-height: 1.8; }
+
+    /* ── CONTENT IDEA ── */
+    .content-card {
+      background: linear-gradient(135deg, #0D0D1A, var(--card));
+      border: 1px solid #2A2A5A;
+      border-radius: 14px;
+      padding: 28px;
+    }
+    .content-card .head {
+      display: flex; align-items: center; gap: 10px;
+      margin-bottom: 20px;
+    }
+    .content-card .head .icon { font-size: 24px; }
+    .content-card .head h3 {
+      font-size: 16px; font-weight: 700; color: #9B9BFF;
+    }
+    .content-row {
+      display: grid;
+      grid-template-columns: 100px 1fr;
+      gap: 8px 16px;
+      font-size: 14px;
+      margin-bottom: 8px;
+      align-items: baseline;
+    }
+    .content-row .label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      color: var(--muted);
+      text-transform: uppercase;
+      padding-top: 2px;
+    }
+    .content-row .value { color: var(--text); line-height: 1.65; }
+    .hook-text {
+      background: #0D0D1A;
+      border: 1px solid #2A2A5A;
+      border-radius: 8px;
+      padding: 14px 18px;
+      font-size: 15px;
+      color: #C8C8FF;
+      font-style: italic;
+      margin-top: 4px;
+      line-height: 1.6;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 40px 24px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    footer .brand { color: var(--gold); font-weight: 700; font-size: 15px; margin-bottom: 8px; }
+    footer a { color: var(--gold); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+
+    /* ── TAGS ── */
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+    .tag {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      padding: 4px 12px;
+      border-radius: 20px;
+      background: var(--border);
+      color: var(--muted);
+    }
+    .tag.gold { background: #1C1400; color: var(--gold); }
+
+    @media (max-width: 600px) {
+      .hero { padding: 40px 16px 32px; }
+      .main { padding: 0 16px 60px; }
+      .news-card, .radar-card, .insight-block, .content-card { padding: 18px; }
+      .news-card h3 { font-size: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<nav class="topbar">
+  <div class="brand">⚡ AI BRIEFING</div>
+  <div class="socials">
+    <a href="#" target="_blank">Telegram</a>
+    <a href="#" target="_blank">Instagram</a>
+    <a href="#" target="_blank">YouTube</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="date-badge">9 Iyun 2026 · Seshanba</div>
+  <h1>Bugungi <span>Sun'iy Intellekt</span><br/>Yangiliklari</h1>
+  <p class="subtitle">
+    Dunyo AI influencerlari manbalaridan — o'zbek tilida tahlil.
+    Zafar — AI Strategist, Toshkent.
+  </p>
+  <div class="breaking">
+    <div class="fire">🔥</div>
+    <div>
+      <div class="label">Bugunning eng muhim yangiligi</div>
+      <p>Wharton professori Ethan Mollick yangi kitobida asosiy savolni o'zgartirdi: "AI bilan qanday ishlash kerak?" emas — "AI siz dan yaxshiroq ishlaganda nima qilasiz?" Shu bilan birga Uber butun yillik AI budgetini 4 oyda sarfladi va xodimlarga $1,500/oy cheklov qo'ydi. AI iqtisodiyoti haqiqati vs hype tobora oydinlashmoqda.</p>
+    </div>
+  </div>
+</header>
+
+<!-- MAIN -->
+<main class="main">
+
+  <div class="section-title">📰 Dunyo AI manbalaridan — bugungi top-5</div>
+
+  <!-- #1 -->
+  <article class="news-card">
+    <div class="card-meta">
+      <div class="card-num">1</div>
+      <div class="card-source">One Useful Thing · Ethan Mollick (Wharton) · <span>26 May 2026</span></div>
+    </div>
+    <h3>AI Dan Ko'p Foydalanish Aqlni Topshirish Emas — Ammo Ko'pchilik Shu Xatoni Qilmoqda</h3>
+    <div class="body">
+      BCG (Boston Consulting Group) konsaltinglar bilan o'tkazilgan tajriba shuni ko'rsatdi: AI yordamida ishlaganlar ko'pchilik vazifalarda ancha yaxshiroq natija ko'rsatdi — biroq AI bajarib bo'lmaydigan bitta vazifada AI "ishonchli tarzda yolg'on aytdi" va odamlar shu yolg'onga ishonib qoldi. Turkiyadagi o'rta maktab tajribasida ChatGPT matematik o'qishni yomonlashtirdi; boshqa bir tajribada esa AI-muallim Python dasturlash o'qishini 6-9 oyga tezlashtirdi. Farq: birinchisida AI o'ylash o'rnini bosdi, ikkinchisida qo'llab-quvvatladi. Mollick buni "kognitiv taslim" deb ataydi — aqlni AI ga topshirib qo'yish.
+    </div>
+    <div class="insight">
+      <span class="tag">→ Yosh auditoriya uchun</span>
+      Universitetda, ishda va kundalik hayotda AI dan qanday foydalanish kerak — va qachon o'z aqlini ishlatish zarur. O'zbekistonda ta'lim va yoshlar uchun eng dolzarb mavzu.
+    </div>
+  </article>
+
+  <!-- #2 -->
+  <article class="news-card">
+    <div class="card-meta">
+      <div class="card-num">2</div>
+      <div class="card-source">One Useful Thing · Ethan Mollick (Wharton) · <span>4 Iyun 2026</span></div>
+    </div>
+    <h3>"Co-Intelligence" Tugadi — Endi "Co-Existence": AI Siz Dan Yaxshiroq Ishlaganda Nima Bo'ladi?</h3>
+    <div class="body">
+      Ethan Mollick yangi kitobi "Co-Existence" (20 oktyabr 2026) ni e'lon qildi — "Co-Intelligence" bestselleri davomi. Ikki yil avvalgi savol: "AI bilan qanday birga ishlash mumkin?" Endi savol boshqa: "AI ba'zi sohalarda siz dan yaxshiroq ishlaganda qanday yashash va ishlash kerak?" Qiziq tafsilot: Mollick o'z kitob saytini Google uchun emas, AI agentlar uchun optimallashtirmoqda — chunki endi kitobni odamlarga AI tavsiya qiladi. Bu katta paradigma o'zgarishi.
+    </div>
+    <div class="insight">
+      <span class="tag">→ Yosh auditoriya uchun</span>
+      "AI meni ishsiz qoldiradi" qo'rquviga eng to'g'ridan-to'g'ri va dalilga asoslangan javob. O'zbek yoshlari uchun juda muhim: qaysi ko'nikmalarni rivojlantirish kerak?
+    </div>
+  </article>
+
+  <!-- #3 -->
+  <article class="news-card">
+    <div class="card-meta">
+      <div class="card-num">3</div>
+      <div class="card-source">Simon Willison (Django yaratuvchisi) · simonwillison.net · <span>3 Iyun 2026</span></div>
+    </div>
+    <h3>Uber 2026 Yillik AI Budgetini 4 Oyda Sarfladi — Va Xodimlarga Cheklov Qo'ydi</h3>
+    <div class="body">
+      Uber har bir xodimga oylik AI vositalariga xarajatni <strong>$1,500</strong> bilan chekladi (Cursor, Claude Code va boshqalar). Sabab: kompaniya butun 2026 yillik AI budgetini atigi 4 oyda tugatdi. Hisob-kitob: 2 ta vosita × $1,500/oy × 12 oy = $36,000/yil — o'rtacha muhandis maoshining ($330,000) 11 foizi. Simon Willison shunday xulosaga keldi: bu cheklov "tokenmaxxing" musobaqalariga nisbatan ancha oqilona siyosat. Muhim savol: kompaniyalar AI ga qancha sarflashi kerak va bu xarajat o'zini qoplayaptimi?
+    </div>
+    <div class="insight">
+      <span class="tag">→ Yosh auditoriya uchun</span>
+      Korporatsiyalar AI ga miltillagan ko'z bilan emas, hisob-kitob bilan qarayapti. O'zbek tadbirkorlar va ishchilar uchun: AI vositalari budjeti qanday bo'lishi kerak?
+    </div>
+  </article>
+
+  <!-- #4 -->
+  <article class="news-card">
+    <div class="card-meta">
+      <div class="card-num">4</div>
+      <div class="card-source">Import AI #459 · Jack Clark (Anthropic co-founder) · <span>1 Iyun 2026</span></div>
+    </div>
+    <h3>AQSh AI Iqtisodiyoti Yiliga +2,600% O'smoqda — Lekin Rasmiy Statistikada Ko'rinmayapti</h3>
+    <div class="body">
+      Virginia universiteti, Anthropic va Kanada Markaziy Banki tadqiqotchilari hayratlanarli kashfiyot qildi: AQSh AI iqtisodiyoti sifat jihatidan yiliga <strong>2,600%</strong> o'smoqda. Lekin bu YalIM (GDP) da ko'rinmayapti — sababi: AI ning sifati qanchalik oshsa, narxi ham shuncha tezlik bilan tushmoqda. Shu sababli an'anaviy iqtisodiy hisobot AI o'sishini qayd qilolmayapti. Xuddi 1980-yillarda kompyuterlar kundalik hayotga kirib kelganda yuz bergan kabi muammo — lekin bu gal o'sish tezroq.
+    </div>
+    <div class="insight">
+      <span class="tag">→ Yosh auditoriya uchun</span>
+      AI da ish qilish — bu hozirgi davrning eng katta iqtisodiy imkoniyati. O'zbekiston yoshlari uchun: AI bilan ishlaganlar iqtisodiy jihatdan qaysi tomonda bo'lishini tushuntirish.
+    </div>
+  </article>
+
+  <!-- #5 -->
+  <article class="news-card">
+    <div class="card-meta">
+      <div class="card-num">5</div>
+      <div class="card-source">Interconnects · Nathan Lambert (Ai2 tadqiqotchisi) · <span>1 Iyun 2026</span></div>
+    </div>
+    <h3>Ochiq va Yopiq AI Modellari Turli Yo'lda — Kichik Biznes Uchun Xushxabar</h3>
+    <div class="body">
+      Ai2 instituti tadqiqotchisi Nathan Lambert muhim tahlil yozdi: Anthropic va OpenAI kabi yopiq modellar yuqori narxli, yuqori intellekt talab qiladigan bozorni egallaydi (asosan dasturlash va korporativ agenlar). Ochiq modellar esa (Llama, Qwen, Mistral) kichik va o'rta biznesga arzon va etarlicha yaxshi variant sifatida keng tarqaladi. Prognoz: Anthropic va OpenAI $2–10 trillion qiymatga yetishi mumkin — biroq ochiq model ekotizimining umumiy qiymati bundan ham kattaroq bo'ladi, faqat ko'proq ishtirokchilar orasida taqsimlanadi.
+    </div>
+    <div class="insight">
+      <span class="tag">→ Yosh auditoriya uchun</span>
+      O'zbekistondagi kichik biznes va startaplar uchun amaliy savol: qimmat yopiq modellar (ChatGPT, Claude) yoki bepul ochiq modellar (Llama, Qwen)? Qaysi vaziyatda qaysi biri mos?
+    </div>
+  </article>
+
+  <!-- MARKAZIY OSIYO RADARI -->
+  <div class="section-title">🗺️ Markaziy Osiyo Radari</div>
+
+  <div class="radar-card">
+    <div class="radar-head">
+      <div class="icon">📡</div>
+      <h3>Bugun maxsus signal yo'q</h3>
+    </div>
+    <p>
+      Bugungi manbalar (Mollick, Willison, Lambert, Clark) asosan global AI tendentsiyalarini qamrab oladi. Markaziy Osiyo va O'zbekiston uchun to'g'ridan-to'g'ri signal bugun aniqlanmadi.
+      <br/><br/>
+      Kecha eslatilganlarni eslatsak:
+      <span class="stat">O'zbekiston: dunyo 79-o'rin</span>
+      <span class="stat">Toshkent: +121 pozitsiya</span>
+      <span class="stat">CA startup: +81% o'sish</span>
+    </p>
+  </div>
+
+  <!-- STRATEGIK TAHLIL -->
+  <div class="section-title">💡 Strategik Tahlil</div>
+
+  <div class="insight-block">
+    <div class="head">
+      <div class="icon">💡</div>
+      <h3>Bugungi eng katta trend</h3>
+    </div>
+    <p>
+      Bugungi manbalar bitta umumiy xabarni yetkazmoqda: <strong>AI hype davri tugab, haqiqat davri boshlandi.</strong>
+      <br/><br/>
+      Uber budgetni 4 oyda tugatdi → AI ni nazorat ostida ishlatish kerak. BCG tajribasi → AI dan foyda olish uchun qanday foydalanish muhim, foydalanish emas. Import AI ma'lumotlari → AI iqtisodiyoti o'smoqda, lekin an'anaviy ko'rsatkichlarda ko'rinmayapti. Bu shuni anglatadiki: AI dan samarali foydalana oladiganlar — qo'l mehnatida emas, aql mehnatida — bu davrning g'oliblariga aylanadi.
+      <br/><br/>
+      <strong>O'zbekiston uchun imkoniyat:</strong> Yosh auditoriya "AI menga tahdid" emas, "AI mening kuchaytirgichim" deb tushunishi kerak. Bu tushunchani o'zbek tilida, mahalliy misollar bilan tushuntiradigan ovoz — hali yo'q.
+    </p>
+  </div>
+
+  <!-- KONTENT G'OYASI -->
+  <div class="section-title">🎬 Bugungi Kontent G'oyasi</div>
+
+  <div class="content-card">
+    <div class="head">
+      <div class="icon">🎬</div>
+      <h3>Bugungi Reel / YouTube Short</h3>
+    </div>
+
+    <div class="content-row">
+      <div class="label">Manba</div>
+      <div class="value">Maqola #1 — Ethan Mollick "Kognitiv taslim" tadqiqoti</div>
+    </div>
+    <div class="content-row">
+      <div class="label">Format</div>
+      <div class="value">Reel yoki YouTube Short (45–60 soniya)</div>
+    </div>
+    <div class="content-row">
+      <div class="label">Hook</div>
+      <div class="value">
+        <div class="hook-text">
+          "Wharton professori isbotladi: AI seni aqlli qilishi ham mumkin, ahmoq ham. Farqi — qanday foydalanishingda."
+        </div>
+      </div>
+    </div>
+    <div class="content-row">
+      <div class="label">Asosiy xabar</div>
+      <div class="value">BCG tajribasi: AI ishlatgan konsaltinglar yaxshiroq natija ko'rsatdi — ammo AI ishonchli ravishda xato qilgan vazifada ham AI ga ishonib qolishdi. Turkiya maktabi: ChatGPT matematikani yomonlashtirdi. Python ta'lim: 6-9 oy tezlashtirdi. "Kognitiv taslim" — aqlni AI ga topshirib qo'yish — bu katta xavf.</div>
+    </div>
+    <div class="content-row">
+      <div class="label">Yakuniy</div>
+      <div class="value">"AI ni ishlatish — bu texnologiya savoli emas. Bu o'z aqlini qachon ishlatish va qachon AI ga topshirish savoli."</div>
+    </div>
+
+    <div class="tags">
+      <span class="tag gold">#AIBriefing</span>
+      <span class="tag gold">#AI2026</span>
+      <span class="tag">#Uzbekistan</span>
+      <span class="tag">#SuniyIntellekt</span>
+      <span class="tag">#AIStrategist</span>
+    </div>
+  </div>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="brand">⚡ AI BRIEFING</div>
+  <p>Zafar · AI Strategist · Toshkent, O'zbekiston</p>
+  <p style="margin-top:8px;">
+    Har kuni yangilanadi ·
+    <a href="#">Telegram kanaliga obuna bo'ling</a>
+  </p>
+</footer>
+
+</body>
+</html>
