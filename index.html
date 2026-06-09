@@ -3,357 +3,405 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AI Briefing | Zafar — AI Strategist</title>
-  <meta name="description" content="O'zbekiston uchun har kunlik sun'iy intellekt yangiliklari va tahlili. Zafar — AI Strategist." />
+  <title>O'zbek AI Digest | Zafar — AI Strategist</title>
+  <meta name="description" content="O'zbekiston uchun har kunlik sun'iy intellekt yangiliklari. Dunyo influencerlaridan — o'zbek tilida." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --black:    #0A0A0A;
-      --dark:     #141414;
-      --card:     #1C1C1C;
-      --border:   #2A2A2A;
-      --gold:     #D4A017;
-      --gold-dim: #9A7210;
-      --copper:   #B87333;
-      --text:     #E2E2E2;
-      --muted:    #888;
-      --accent:   #FFB800;
+      --bg:       #F2F1ED;
+      --surface:  #FFFFFF;
+      --border:   #E2E0DA;
+      --text:     #1A1A1A;
+      --muted:    #777770;
+      --light:    #A8A89E;
+      --gold:     #C9971A;
+      --gold-bg:  #FBF5E6;
+      --gold-dim: #E8D5A0;
+      --green:    #2E7D32;
+      --green-bg: #F0F7F0;
+      --purple:   #5C35A0;
+      --purple-bg:#F3F0FA;
     }
 
     html { scroll-behavior: smooth; }
 
     body {
-      background: var(--black);
+      background: var(--bg);
       color: var(--text);
       font-family: 'Inter', sans-serif;
       font-size: 16px;
       line-height: 1.7;
-      min-height: 100vh;
     }
 
-    /* ── TOP BAR ── */
+    /* ── TOPBAR ── */
     .topbar {
-      background: var(--dark);
+      background: var(--surface);
       border-bottom: 1px solid var(--border);
-      padding: 10px 24px;
+      padding: 14px 20px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      font-size: 12px;
-      color: var(--muted);
       position: sticky;
       top: 0;
       z-index: 100;
     }
     .topbar .brand {
-      font-weight: 700;
-      color: var(--gold);
-      letter-spacing: 2px;
       font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      color: var(--text);
+      text-transform: uppercase;
     }
+    .topbar .brand span { color: var(--gold); }
+    .topbar .socials { display: flex; gap: 16px; }
     .topbar .socials a {
+      font-size: 12px;
+      font-weight: 600;
       color: var(--muted);
       text-decoration: none;
-      margin-left: 16px;
+      letter-spacing: 0.3px;
       transition: color 0.2s;
     }
     .topbar .socials a:hover { color: var(--gold); }
 
+    /* ── WRAPPER ── */
+    .wrap {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+
     /* ── HERO ── */
     .hero {
-      padding: 60px 24px 40px;
-      max-width: 900px;
-      margin: 0 auto;
-      text-align: center;
+      padding: 40px 0 32px;
+      border-bottom: 1px solid var(--border);
     }
-    .hero .date-badge {
-      display: inline-block;
-      background: var(--gold-dim);
-      color: var(--accent);
+    .hero .date-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--gold-bg);
+      border: 1px solid var(--gold-dim);
+      color: var(--gold);
       font-size: 11px;
       font-weight: 700;
-      letter-spacing: 3px;
+      letter-spacing: 2px;
       text-transform: uppercase;
-      padding: 6px 16px;
+      padding: 5px 14px;
       border-radius: 20px;
-      margin-bottom: 24px;
+      margin-bottom: 20px;
     }
     .hero h1 {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(32px, 5vw, 58px);
+      font-size: clamp(26px, 5vw, 42px);
       font-weight: 800;
-      line-height: 1.15;
-      color: #fff;
-      margin-bottom: 16px;
+      line-height: 1.2;
+      color: var(--text);
+      margin-bottom: 12px;
     }
     .hero h1 span { color: var(--gold); }
     .hero .subtitle {
-      font-size: 17px;
+      font-size: 15px;
       color: var(--muted);
-      max-width: 560px;
-      margin: 0 auto 40px;
+      margin-bottom: 24px;
     }
-    .hero .breaking {
-      background: linear-gradient(135deg, #1C1400, #1C1C1C);
+
+    /* Breaking */
+    .breaking {
+      background: var(--gold-bg);
       border: 1px solid var(--gold-dim);
-      border-radius: 12px;
-      padding: 20px 28px;
-      text-align: left;
+      border-left: 4px solid var(--gold);
+      border-radius: 0 10px 10px 0;
+      padding: 16px 18px;
       display: flex;
-      gap: 16px;
-      align-items: flex-start;
+      gap: 12px;
     }
-    .hero .breaking .fire { font-size: 28px; flex-shrink: 0; }
-    .hero .breaking .label {
+    .breaking .fire { font-size: 20px; flex-shrink: 0; margin-top: 2px; }
+    .breaking .label {
       font-size: 10px;
       font-weight: 700;
       letter-spacing: 2px;
       color: var(--gold);
-      margin-bottom: 6px;
-      text-transform: uppercase;
-    }
-    .hero .breaking p { font-size: 15px; color: var(--text); }
-
-    /* ── MAIN GRID ── */
-    .main {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 0 24px 80px;
-    }
-
-    .section-title {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin: 48px 0 20px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-    .section-title::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: var(--border);
-    }
-
-    /* ── NEWS CARD ── */
-    .news-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 24px 28px;
-      margin-bottom: 16px;
-      transition: border-color 0.2s, transform 0.2s;
-      position: relative;
-      overflow: hidden;
-    }
-    .news-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0;
-      width: 3px; height: 100%;
-      background: var(--gold);
-      opacity: 0;
-      transition: opacity 0.2s;
-    }
-    .news-card:hover {
-      border-color: var(--gold-dim);
-      transform: translateY(-2px);
-    }
-    .news-card:hover::before { opacity: 1; }
-
-    .card-meta {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 10px;
-    }
-    .card-num {
-      background: var(--gold-dim);
-      color: var(--accent);
-      font-weight: 800;
-      font-size: 12px;
-      width: 28px; height: 28px;
-      border-radius: 8px;
-      display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0;
-    }
-    .card-source {
-      font-size: 11px;
-      color: var(--muted);
-      font-weight: 500;
-      letter-spacing: 0.5px;
-    }
-    .card-source span {
-      color: var(--gold);
-      font-weight: 600;
-    }
-
-    .news-card h3 {
-      font-size: 18px;
-      font-weight: 700;
-      color: #fff;
-      margin-bottom: 10px;
-      line-height: 1.35;
-    }
-    .news-card .body {
-      font-size: 14.5px;
-      color: #B8B8B8;
-      margin-bottom: 14px;
-      line-height: 1.75;
-    }
-    .news-card .insight {
-      background: #111;
-      border-left: 3px solid var(--gold);
-      border-radius: 0 8px 8px 0;
-      padding: 12px 16px;
-      font-size: 13.5px;
-      color: var(--text);
-    }
-    .news-card .insight .tag {
-      font-size: 10px;
-      font-weight: 700;
-      color: var(--gold);
-      letter-spacing: 1.5px;
       text-transform: uppercase;
       display: block;
+      margin-bottom: 5px;
+    }
+    .breaking p { font-size: 14px; color: var(--text); line-height: 1.65; }
+
+    /* ── SECTION HEADER ── */
+    .section-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 32px 0 16px;
+    }
+    .section-head h2 {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .section-head .count {
+      font-size: 11px;
+      color: var(--light);
+    }
+
+    /* ── ARTICLE CARD ── */
+    .article-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 12px;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .article-card:hover {
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+      transform: translateY(-1px);
+    }
+
+    .card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10px;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .influencer-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: var(--gold-bg);
+      border: 1px solid var(--gold-dim);
+      color: var(--gold);
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 20px;
+      white-space: nowrap;
+    }
+    .influencer-badge .dot {
+      width: 5px; height: 5px;
+      background: var(--gold);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .card-date {
+      font-size: 11px;
+      color: var(--light);
+      white-space: nowrap;
+    }
+
+    .article-card h3 {
+      font-size: 17px;
+      font-weight: 700;
+      line-height: 1.35;
+      color: var(--text);
+      margin-bottom: 10px;
+    }
+    .article-card .body {
+      font-size: 14px;
+      color: #555550;
+      line-height: 1.75;
+      margin-bottom: 14px;
+    }
+    .article-card .insight {
+      background: var(--bg);
+      border-radius: 8px;
+      padding: 12px 14px;
+      font-size: 13px;
+      color: var(--text);
+      line-height: 1.6;
+    }
+    .article-card .insight .tag {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      color: var(--muted);
+      text-transform: uppercase;
+      margin-bottom: 5px;
+    }
+    .card-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 22px; height: 22px;
+      background: var(--text);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      border-radius: 6px;
+      flex-shrink: 0;
+    }
+
+    /* ── CONTENT IDEA (ajralib turadi) ── */
+    .content-section {
+      background: var(--purple-bg);
+      border: 1px solid #C4B4E8;
+      border-radius: 12px;
+      padding: 22px 20px;
+      margin: 8px 0 12px;
+    }
+    .content-section .cs-head {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+    .content-section .cs-icon { font-size: 22px; }
+    .content-section .cs-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--purple);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    .cs-row {
+      margin-bottom: 12px;
+    }
+    .cs-row .cs-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: var(--muted);
+      text-transform: uppercase;
       margin-bottom: 4px;
+    }
+    .cs-row .cs-value {
+      font-size: 14px;
+      color: var(--text);
+      line-height: 1.65;
+    }
+    .hook-box {
+      background: var(--surface);
+      border: 1px solid #C4B4E8;
+      border-radius: 8px;
+      padding: 14px 16px;
+      font-size: 15px;
+      font-style: italic;
+      color: var(--purple);
+      line-height: 1.6;
+      margin-top: 4px;
     }
 
     /* ── RADAR ── */
-    .radar-card {
-      background: linear-gradient(135deg, #0D1A0D, var(--card));
-      border: 1px solid #1F4D1F;
-      border-radius: 14px;
-      padding: 24px 28px;
-      margin-bottom: 16px;
+    .radar-section {
+      background: var(--green-bg);
+      border: 1px solid #B8D8B8;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 12px;
     }
-    .radar-card .radar-head {
-      display: flex; align-items: center; gap: 10px;
-      margin-bottom: 14px;
+    .radar-section .rh {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 12px;
     }
-    .radar-card .radar-head .icon { font-size: 22px; }
-    .radar-card .radar-head h3 {
-      font-size: 16px; font-weight: 700; color: #6FCF6F;
-    }
-    .radar-card p { font-size: 14.5px; color: #B8B8B8; line-height: 1.75; }
-    .radar-card .stat {
+    .radar-section .rh .icon { font-size: 18px; }
+    .radar-section .rh h3 { font-size: 14px; font-weight: 700; color: var(--green); }
+    .radar-section p { font-size: 14px; color: #444; line-height: 1.7; }
+    .stat-chip {
       display: inline-block;
-      background: #1A3A1A;
-      color: #6FCF6F;
+      background: #DCEEDA;
+      color: var(--green);
+      font-size: 12px;
       font-weight: 700;
-      font-size: 13px;
-      padding: 3px 10px;
-      border-radius: 6px;
-      margin: 4px 4px 4px 0;
+      padding: 2px 10px;
+      border-radius: 20px;
+      margin: 3px 3px 3px 0;
     }
 
     /* ── INSIGHT BLOCK ── */
-    .insight-block {
-      background: linear-gradient(135deg, #1A1200, var(--card));
+    .insight-section {
+      background: var(--gold-bg);
       border: 1px solid var(--gold-dim);
-      border-radius: 14px;
-      padding: 28px;
-      margin-bottom: 16px;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 12px;
     }
-    .insight-block .head {
-      display: flex; align-items: center; gap: 10px;
-      margin-bottom: 14px;
+    .insight-section .ih {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 12px;
     }
-    .insight-block .head .icon { font-size: 24px; }
-    .insight-block .head h3 {
-      font-size: 16px; font-weight: 700; color: var(--gold);
-    }
-    .insight-block p { font-size: 15px; color: #C8C8C8; line-height: 1.8; }
+    .insight-section .ih .icon { font-size: 18px; }
+    .insight-section .ih h3 { font-size: 14px; font-weight: 700; color: var(--gold); }
+    .insight-section p { font-size: 14px; color: #444; line-height: 1.75; }
 
-    /* ── CONTENT IDEA ── */
-    .content-card {
-      background: linear-gradient(135deg, #0D0D1A, var(--card));
-      border: 1px solid #2A2A5A;
-      border-radius: 14px;
-      padding: 28px;
-    }
-    .content-card .head {
-      display: flex; align-items: center; gap: 10px;
-      margin-bottom: 20px;
-    }
-    .content-card .head .icon { font-size: 24px; }
-    .content-card .head h3 {
-      font-size: 16px; font-weight: 700; color: #9B9BFF;
-    }
-    .content-row {
-      display: grid;
-      grid-template-columns: 100px 1fr;
-      gap: 8px 16px;
-      font-size: 14px;
-      margin-bottom: 8px;
-      align-items: baseline;
-    }
-    .content-row .label {
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 1.5px;
-      color: var(--muted);
-      text-transform: uppercase;
-      padding-top: 2px;
-    }
-    .content-row .value { color: var(--text); line-height: 1.65; }
-    .hook-text {
-      background: #0D0D1A;
-      border: 1px solid #2A2A5A;
-      border-radius: 8px;
-      padding: 14px 18px;
-      font-size: 15px;
-      color: #C8C8FF;
-      font-style: italic;
-      margin-top: 4px;
-      line-height: 1.6;
+    /* ── DIVIDER ── */
+    .divider {
+      height: 1px;
+      background: var(--border);
+      margin: 8px 0;
     }
 
     /* ── FOOTER ── */
     footer {
       border-top: 1px solid var(--border);
-      padding: 40px 24px;
+      padding: 32px 0 40px;
       text-align: center;
-      color: var(--muted);
-      font-size: 13px;
     }
-    footer .brand { color: var(--gold); font-weight: 700; font-size: 15px; margin-bottom: 8px; }
+    footer .brand {
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      color: var(--text);
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    footer .brand span { color: var(--gold); }
+    footer p {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.8;
+    }
     footer a { color: var(--gold); text-decoration: none; }
     footer a:hover { text-decoration: underline; }
 
     /* ── TAGS ── */
-    .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; }
     .tag {
       font-size: 11px;
       font-weight: 600;
-      letter-spacing: 0.5px;
-      padding: 4px 12px;
+      padding: 3px 10px;
       border-radius: 20px;
-      background: var(--border);
+      background: var(--bg);
       color: var(--muted);
+      border: 1px solid var(--border);
     }
-    .tag.gold { background: #1C1400; color: var(--gold); }
+    .tag.gold {
+      background: var(--gold-bg);
+      color: var(--gold);
+      border-color: var(--gold-dim);
+    }
 
-    @media (max-width: 600px) {
-      .hero { padding: 40px 16px 32px; }
-      .main { padding: 0 16px 60px; }
-      .news-card, .radar-card, .insight-block, .content-card { padding: 18px; }
-      .news-card h3 { font-size: 16px; }
+    /* ── MOBILE ── */
+    @media (max-width: 480px) {
+      .topbar { padding: 12px 16px; }
+      .topbar .brand { font-size: 11px; letter-spacing: 1.5px; }
+      .topbar .socials a { font-size: 11px; }
+      .hero { padding: 28px 0 24px; }
+      .hero h1 { font-size: 26px; }
+      .article-card { padding: 16px; }
+      .article-card h3 { font-size: 16px; }
+      .content-section { padding: 18px 16px; }
+      .hook-box { font-size: 14px; }
     }
   </style>
 </head>
 <body>
 
-<!-- TOP BAR -->
+<!-- TOPBAR -->
 <nav class="topbar">
-  <div class="brand">⚡ AI BRIEFING</div>
+  <div class="brand">O'ZBEK <span>AI</span> DIGEST</div>
   <div class="socials">
     <a href="#" target="_blank">Telegram</a>
     <a href="#" target="_blank">Instagram</a>
@@ -362,198 +410,216 @@
 </nav>
 
 <!-- HERO -->
-<header class="hero">
-  <div class="date-badge">9 Iyun 2026 · Seshanba</div>
-  <h1>Bugungi <span>Sun'iy Intellekt</span><br/>Yangiliklari</h1>
-  <p class="subtitle">
-    Dunyo AI influencerlari manbalaridan — o'zbek tilida tahlil.
-    Zafar — AI Strategist, Toshkent.
-  </p>
-  <div class="breaking">
-    <div class="fire">🔥</div>
-    <div>
-      <div class="label">Bugunning eng muhim yangiligi</div>
-      <p>Apple WWDC 2026 da ulkan e'lon: yangi Siri AI endi Gemini asosidagi model — Google Cloud va NVIDIA serverlarida ishlaydi. Bir vaqtda Microsoft ham ikkita yangi AI model chiqardi. AI endi faqat chatbot emas — u telefon, kompyuter va korxona infratuzilmasiga singib ketmoqda.</p>
+<div class="wrap">
+  <header class="hero">
+    <div class="date-pill">📅 9 Iyun 2026 · Seshanba</div>
+    <h1>Bugungi <span>Sun'iy Intellekt</span> Yangiliklari</h1>
+    <p class="subtitle">Dunyo AI influencerlaridan — o'zbek tilida tahlil. Zafar · AI Strategist</p>
+    <div class="breaking">
+      <div class="fire">🔥</div>
+      <div>
+        <span class="label">Bugunning eng muhim yangiligi</span>
+        <p>Wharton professori Ethan Mollick: "AI seni aqlli qilishi ham mumkin, ahmoq ham — farqi qanday ishlatishingda." BCG va Turkiya maktabidagi tadqiqotlar bu fikrni isbotladi. Shu bilan birga Uber butun yillik AI budgetini 4 oyda sarfladi.</p>
+      </div>
     </div>
+  </header>
+
+  <!-- TOP-5 -->
+  <div class="section-head">
+    <h2>📰 Dunyo AI manbalaridan — bugungi top-5</h2>
+    <span class="count">5 ta maqola</span>
   </div>
-</header>
-
-<!-- MAIN -->
-<main class="main">
-
-  <div class="section-title">📰 Dunyo AI manbalaridan — bugungi top-5</div>
 
   <!-- #1 -->
-  <article class="news-card">
-    <div class="card-meta">
-      <div class="card-num">1</div>
-      <div class="card-source">Simon Willison · simonwillison.net · <span>8 Iyun 2026</span></div>
+  <article class="article-card">
+    <div class="card-top">
+      <div style="display:flex;align-items:center;gap:8px;">
+        <div class="card-num">1</div>
+        <div class="influencer-badge"><div class="dot"></div>Ethan Mollick · Wharton</div>
+      </div>
+      <div class="card-date">26 May 2026</div>
     </div>
-    <h3>Apple WWDC: iPhone Ekraningizni Endi AI Ko'radi — Va Bu Texnologiya Google'dan</h3>
+    <h3>AI Dan Ko'p Foydalanish — Aqlni Topshirish Emas. Ammo Ko'pchilik Shu Xatoni Qilmoqda</h3>
     <div class="body">
-      Apple 2026 WWDC da keyingi avlod Apple Intelligence va Siri AI ni taqdim etdi. Katta sir: yangi Siri xususiy Gemini asosidagi modeldan foydalanadi — lekin model Google Cloud da, NVIDIA serverlarida ishlaydi. Yangi xususiyat — Vision LLM texnologiyasi: AI iPhone yoki Mac ekranida nima borligini ko'rib tahlil qiladi, har bir ilovani alohida moslashtirmasdan. Core AI nomli yangi kutubxona esa ishlab chiquvchilarga Apple silikon chiplarida o'z modellarini ishlatishga imkon beradi. iOS 27 Developer Beta bugun yuklab olinadi, lekin yangi Siri AI uchun navbat ro'yxati mavjud.
+      BCG (Boston Consulting Group) konsaltinglar bilan o'tkazilgan tajriba shuni ko'rsatdi: AI yordamida ishlaganlar ko'pchilik vazifalarda yaxshiroq natija ko'rsatdi — biroq AI bajarib bo'lmaydigan bitta vazifada uning xatosiga ishonib qolishdi. Turkiyadagi maktabda ChatGPT matematik o'qishni yomonlashtirdi. Boshqa tajribada esa AI-muallim Python o'qishni 6-9 oyga tezlashtirdi. Farq: birinchisida AI o'ylash o'rnini bosdi, ikkinchisida qo'llab-quvvatladi. Mollick buni "kognitiv taslim" deb ataydi.
     </div>
     <div class="insight">
-      <span class="tag">→ Yosh auditoriya uchun</span>
-      iPhone ishlatadigan har bir kishi uchun: telefoning endi ekrandagi hamma narsani "tushunadi". O'zbek yoshlar uchun amaliy imkoniyat — iPhone da o'zbek tilidagi AI yordamchi?
+      <span class="tag">→ Yosh auditoriya uchun</span><br/>
+      Universitetda, ishda AI dan qanday foydalanish kerak — va qachon o'z aqlini ishlatish zarur. O'zbekistonda ta'lim va yoshlar uchun eng dolzarb mavzu.
     </div>
   </article>
 
   <!-- #2 -->
-  <article class="news-card">
-    <div class="card-meta">
-      <div class="card-num">2</div>
-      <div class="card-source">Simon Willison · simonwillison.net · <span>2 Iyun 2026</span></div>
+  <article class="article-card">
+    <div class="card-top">
+      <div style="display:flex;align-items:center;gap:8px;">
+        <div class="card-num">2</div>
+        <div class="influencer-badge"><div class="dot"></div>Ethan Mollick · Wharton</div>
+      </div>
+      <div class="card-date">4 Iyun 2026</div>
     </div>
-    <h3>Microsoft O'z AI Modelini Chiqardi: GitHub Copilot Uchun, Sonnet 4.6 Dan Yaxshiroq Deydi</h3>
+    <h3>"Co-Intelligence" Tugadi — Endi "Co-Existence": AI Siz Dan Yaxshiroq Ishlaganda Nima Bo'ladi?</h3>
     <div class="body">
-      Microsoft ikkita yangi AI model e'lon qildi: <strong>MAI-Thinking-1</strong> (1 trillion parametr, 35B faol — o'ylash modeli, tanlab olingan sheriklariga mavjud) va <strong>MAI-Code-1-Flash</strong> (137B parametr, 5B faol — VS Code va GitHub Copilot individual foydalanuvchilariga tarqatilmoqda). Microsoft'ning da'vosi: ko'r-ko'rona inson baholashida MAI-Thinking-1 Claude Sonnet 4.6 dan ustun keldi. Ikkalasi ham to'liq Microsoft tomonidan "toza va litsenziyalangan" ma'lumotlarda qurilgan, deb aytiladi.
+      Mollick yangi kitobi "Co-Existence" (oktyabr 2026) ni e'lon qildi — "Co-Intelligence" bestselleri davomi. Ikki yil avvalgi savol: "AI bilan qanday birga ishlash mumkin?" Endi savol boshqa: "AI ba'zi sohalarda siz dan yaxshiroq ishlaganda qanday yashash kerak?" Diqqatga sazovor: Mollick o'z kitob saytini Google uchun emas, AI agentlar uchun optimallashtirmoqda — chunki endi kitobni odamlarga AI tavsiya qiladi.
     </div>
     <div class="insight">
-      <span class="tag">→ Yosh auditoriya uchun</span>
-      GitHub Copilot ishlatadigan dasturchilar uchun to'g'ridan-to'g'ri xabar. O'zbekistondagi IT soha vakillari e'tiboriga: kodlash vositasi yanada aqlli bo'lmoqda — va bepul.
+      <span class="tag">→ Yosh auditoriya uchun</span><br/>
+      "AI meni ishsiz qoldiradi" qo'rquviga eng to'g'ridan-to'g'ri javob. O'zbek yoshlari uchun: qaysi ko'nikmalarni rivojlantirish kerak?
     </div>
   </article>
 
   <!-- #3 -->
-  <article class="news-card">
-    <div class="card-meta">
-      <div class="card-num">3</div>
-      <div class="card-source">Simon Willison · simonwillison.net · <span>1 Iyun 2026</span></div>
+  <article class="article-card">
+    <div class="card-top">
+      <div style="display:flex;align-items:center;gap:8px;">
+        <div class="card-num">3</div>
+        <div class="influencer-badge"><div class="dot"></div>Simon Willison · simonwillison.net</div>
+      </div>
+      <div class="card-date">3 Iyun 2026</div>
     </div>
-    <h3>Instagram Akkauntingizni Olish Uchun Haker Meta AI Dan Shunchaki So'radi — Va Oldi</h3>
+    <h3>Uber 2026 Yillik AI Budgetini 4 Oyda Sarfladi — Xodimlarga $1,500/oy Cheklov Qo'yildi</h3>
     <div class="body">
-      404 Media tomonidan tasdiqlangan, ko'plab mustaqil manba isbotlagan xabar: xakerlar Meta AI qo'llab-quvvatlash botiga yozib, mashhur Instagram akkauntlarini o'zlashtirib oldi. Sxema oddiy — "Bu mening usernamem (@jabrlanuvchi), yangi email qo'sh, kodni yuboraman" — AI hisobni qayta tikladi. Meta qo'llab-quvvatlash tizimini AI chatbotga to'g'ridan-to'g'ri bog'lagan, bot esa hisobni bir hamlada tiklash imkoniga ega edi. Simon Willison: "Bu prompt injection ham emas — oddiy so'rov."
+      Uber har bir xodimga oylik AI vositalariga xarajatni <strong>$1,500</strong> bilan chekladi (Cursor, Claude Code va boshqalar). Butun 2026 yillik AI budgeti atigi 4 oyda tugadi. Hisob-kitob: 2 ta vosita × $1,500/oy × 12 oy = $36,000/yil — o'rtacha muhandis maoshining 11 foizi. Simon Willison: bu cheklov "tokenmaxxing" musobaqalariga nisbatan ancha oqilona siyosat.
     </div>
     <div class="insight">
-      <span class="tag">→ Yosh auditoriya uchun</span>
-      Instagram ishlatadigan har bir kishi uchun: 2FA (ikki bosqichli tasdiqlash) ni HOZIROQ yoqing. AI xizmat botlari qanday xatarlar tug'dirishi mumkinligining real misoli.
+      <span class="tag">→ Yosh auditoriya uchun</span><br/>
+      Korporatsiyalar AI ga hisob-kitob bilan qarayapti. O'zbek tadbirkorlar: AI vositalariga qancha sarflash kerak va bu xarajat o'zini qoplayaptimi?
     </div>
   </article>
 
   <!-- #4 -->
-  <article class="news-card">
-    <div class="card-meta">
-      <div class="card-num">4</div>
-      <div class="card-source">The Batch · DeepLearning.AI · <span>5 Iyun 2026</span></div>
+  <article class="article-card">
+    <div class="card-top">
+      <div style="display:flex;align-items:center;gap:8px;">
+        <div class="card-num">4</div>
+        <div class="influencer-badge"><div class="dot"></div>Jack Clark · Import AI</div>
+      </div>
+      <div class="card-date">1 Iyun 2026</div>
     </div>
-    <h3>Xitoy AI Modeli Uchinchi O'rinni Egalladi — Alibaba Google'ni Orqaga Siqmoqda</h3>
+    <h3>AQSh AI Iqtisodiyoti Yiliga +2,600% O'smoqda — Lekin Rasmiy Statistikada Ko'rinmayapti</h3>
     <div class="body">
-      Alibaba yangi <strong>Qwen3.7-Max</strong> modelini chiqardi. Artificial Analysis Intelligence Index bo'yicha u 5–7 o'rinda — Google Gemini 3.1 Pro dan sal pastda. Tezligi: <strong>208 token/soniya</strong> (eng tezlarda biri). Gallyutsinatsiya darajasi: <strong>23%</strong> — barcha frontier modellar orasida eng past. Narxi: $2.50/million token kiritish, $7.50/million token chiqarish. Ammo Alibaba endi ochiq vazn strategiyasini tark etib yopiq model yo'liga o'tmoqda — Qwen komandasidagi rahbariyat almashinuvidan keyin.
+      Virginia universiteti, Anthropic va Kanada Markaziy Banki tadqiqotchilari kashfiyot qildi: AQSh AI iqtisodiyoti sifat jihatidan yiliga <strong>2,600%</strong> o'smoqda. Lekin bu YalIM (GDP) da ko'rinmayapti — sababi AI ning sifati qanchalik oshsa, narxi ham shuncha tez tushmoqda. 1980-yillardagi kompyuterlar kabi hodisa — lekin bu gal o'sish tezroq.
     </div>
     <div class="insight">
-      <span class="tag">→ Yosh auditoriya uchun</span>
-      Kichik biznes va startaplar uchun: arzon narxda juda kuchli model. Xitoy AI endi faqat taqlid emas — raqobat. O'zbekistondagi AI loyihalar uchun yangi alternativ variant.
+      <span class="tag">→ Yosh auditoriya uchun</span><br/>
+      AI da ish qilish — bu davrning eng katta iqtisodiy imkoniyati. O'zbekiston yoshlari uchun: AI bilan ishlaganlar qaysi tomonda bo'lishini tushuntirish.
     </div>
   </article>
 
   <!-- #5 -->
-  <article class="news-card">
-    <div class="card-meta">
-      <div class="card-num">5</div>
-      <div class="card-source">The Batch · DeepLearning.AI · <span>5 Iyun 2026</span></div>
+  <article class="article-card">
+    <div class="card-top">
+      <div style="display:flex;align-items:center;gap:8px;">
+        <div class="card-num">5</div>
+        <div class="influencer-badge"><div class="dot"></div>Nathan Lambert · Interconnects</div>
+      </div>
+      <div class="card-date">1 Iyun 2026</div>
     </div>
-    <h3>AI ni Maxsus O'qitsangiz, U Kitoblarni 90% Aniqlikda So'zma-so'z Ko'chira Boshlaydi</h3>
+    <h3>Ochiq va Yopiq AI Modellari Turli Yo'lda — Kichik Biznes Uchun Xushxabar</h3>
     <div class="body">
-      Stony Brook va Columbia Law School tadqiqotchilari hayratlanarli kashfiyot qildi: GPT-4o, Gemini 2.5 Pro va DeepSeek-V3.1 modellarini matnni kengaytirish uchun fine-tune (maxsus o'qitish) qilsangiz, ular kitoblarning <strong>90%</strong> gacha qismini so'zma-so'z qayta yozadi. Masalan, Kazuo Ishiguro "The Remains of the Day" romanidan 440 ta so'zlik parchalar. Xulosa: AI modellar mualliflik huquqi bilan himoyalangan kontentni "unutmagan" — shunchaki yashirib qo'ygan. Fine-tuning bu to'siqni olib tashlaydi.
+      Anthropic va OpenAI kabi yopiq modellar yuqori narxli, yuqori intellekt bozorini egallaydi. Ochiq modellar (Llama, Qwen, Mistral) esa kichik va o'rta biznesga arzon variant sifatida keng tarqaladi. Prognoz: Anthropic va OpenAI <strong>$2–10 trillion</strong> qiymatga yetishi mumkin — biroq ochiq model ekotizimining umumiy qiymati bundan ham kattaroq bo'ladi.
     </div>
     <div class="insight">
-      <span class="tag">→ Yosh auditoriya uchun</span>
-      Kontent yaratuvchilar va biznes egalari uchun ogohlik: AI bilan ishlaganda mualliflik huquqi masalalari murakkablashmoqda. Huquqiy xavf real — ayniqsa fine-tuned modellar ishlatilganda.
+      <span class="tag">→ Yosh auditoriya uchun</span><br/>
+      O'zbekistondagi kichik biznes va startaplar uchun: qimmat yopiq modellar (ChatGPT, Claude) yoki bepul ochiq modellar (Llama, Qwen)? Qaysi vaziyatda qaysi biri mos?
     </div>
   </article>
 
-  <!-- MARKAZIY OSIYO RADARI -->
-  <div class="section-title">🗺️ Markaziy Osiyo Radari</div>
-
-  <div class="radar-card">
-    <div class="radar-head">
-      <div class="icon">📡</div>
-      <h3>Bugun maxsus signal yo'q</h3>
-    </div>
-    <p>
-      Bugungi manbalar (Willison, DeepLearning.AI The Batch) asosan global AI tendentsiyalarini — Apple, Microsoft, Meta, Alibaba voqealarini — qamrab oldi. Markaziy Osiyo va O'zbekiston uchun to'g'ridan-to'g'ri signal bugun aniqlanmadi.
-      <br/><br/>
-      Eslatma: Alibaba Qwen3.7-Max modeli (#4 maqola) O'zbekistondagi kichik va o'rta biznes uchun potentsial imkoniyat — arzon va kuchli. Shuningdek, Apple WWDC da e'lon qilingan iOS 27 platformasi O'zbekistondagi mobil ilova ishlab chiquvchilari uchun yangi eshiklar ochishi mumkin.
-      <br/><br/>
-      <span class="stat">O'zbekiston: dunyo 79-o'rin</span>
-      <span class="stat">Toshkent: +121 pozitsiya</span>
-      <span class="stat">CA startup: +81% o'sish</span>
-    </p>
-  </div>
-
-  <!-- STRATEGIK TAHLIL -->
-  <div class="section-title">💡 Strategik Tahlil</div>
-
-  <div class="insight-block">
-    <div class="head">
-      <div class="icon">💡</div>
-      <h3>Bugungi eng katta trend</h3>
-    </div>
-    <p>
-      Bugungi manbalar bitta umumiy xabarni yetkazmoqda: <strong>AI endi faqat dastur emas — u infratuzilmaga aylandi.</strong>
-      <br/><br/>
-      Apple telefoningizga AI ko'z o'rnatdi (Vision LLM). Microsoft kompyuteringizdagi kod muharririga AI o'rnatdi (Copilot). Meta ijtimoiy tarmoqdagi qo'llab-quvvatlashga AI qo'ydi — va xavfsizlik muammosi chiqdi. Alibaba uchinchi o'rinni egallagan xitoy modeli chiqardi. Bu trend bir yo'nalishda ketmoqda: AI siz ishlatadigan har bir platformaga kirib boraveradi.
-      <br/><br/>
-      <strong>O'zbekiston uchun imkoniyat:</strong> Bu integratsiyalarni birinchi bo'lib o'zbek tilida tushuntiradigan, amaliy misollar bilan ko'rsatadigan ovoz — hali yo'q. AI Strategist sifatida bu bo'shliq to'ldirishni kutmoqda.
-    </p>
-  </div>
+  <div class="divider"></div>
 
   <!-- KONTENT G'OYASI -->
-  <div class="section-title">🎬 Bugungi Kontent G'oyasi</div>
+  <div class="section-head">
+    <h2>🎬 Bugungi Kontent G'oyasi</h2>
+  </div>
 
-  <div class="content-card">
-    <div class="head">
-      <div class="icon">🎬</div>
-      <h3>Bugungi Reel / YouTube Short</h3>
+  <div class="content-section">
+    <div class="cs-head">
+      <div class="cs-icon">🎬</div>
+      <div class="cs-title">Reel / YouTube Short</div>
     </div>
-
-    <div class="content-row">
-      <div class="label">Manba</div>
-      <div class="value">Maqola #3 — Meta AI Instagram hack voqeasi</div>
+    <div class="cs-row">
+      <div class="cs-label">Manba</div>
+      <div class="cs-value">Maqola #1 — Ethan Mollick "Kognitiv taslim" tadqiqoti</div>
     </div>
-    <div class="content-row">
-      <div class="label">Format</div>
-      <div class="value">Reel yoki YouTube Short (30–45 soniya)</div>
+    <div class="cs-row">
+      <div class="cs-label">Format</div>
+      <div class="cs-value">Reel yoki YouTube Short · 45–60 soniya</div>
     </div>
-    <div class="content-row">
-      <div class="label">Hook</div>
-      <div class="value">
-        <div class="hook-text">
-          "Haker Instagram akkauntingizni olish uchun bitta ish qildi — shunchaki Meta AI dan so'radi."
-        </div>
+    <div class="cs-row">
+      <div class="cs-label">Hook</div>
+      <div class="cs-value">
+        <div class="hook-box">"Wharton professori isbotladi: AI seni aqlli qilishi ham mumkin, ahmoq ham. Farqi — qanday foydalanishingda."</div>
       </div>
     </div>
-    <div class="content-row">
-      <div class="label">Asosiy xabar</div>
-      <div class="value">Meta AI qo'llab-quvvatlash botiga yozildi: "Bu mening usernamem, yangi email qo'sh." Bot hisobni qayta tikladi. Haker kirdi. Bu real voqea — ko'plab mashhur akkauntlar shunday o'g'irlandi. Yechim oddiy: 2FA yoqing, telefon raqamingizni tasdiqlang.</div>
+    <div class="cs-row">
+      <div class="cs-label">Asosiy xabar</div>
+      <div class="cs-value">BCG tajribasi: AI ishlatgan konsaltinglar yaxshiroq natija ko'rsatdi — ammo AI xato qilganda ham unga ishonib qolishdi. Turkiya maktabi: ChatGPT matematikani yomonlashtirdi. Python ta'lim: 6-9 oy tezlashtirdi.</div>
     </div>
-    <div class="content-row">
-      <div class="label">Yakuniy</div>
-      <div class="value">"AI qulay bo'lgani sayin — xavfsizlik masalasi ham muhimroq bo'ladi. Hozir 2FA ni yoqing."</div>
+    <div class="cs-row">
+      <div class="cs-label">Yakuniy</div>
+      <div class="cs-value">"AI ni ishlatish — texnologiya savoli emas. O'z aqlini qachon ishlatish, qachon AI ga topshirish savoli."</div>
     </div>
-
     <div class="tags">
       <span class="tag gold">#AIBriefing</span>
       <span class="tag gold">#AI2026</span>
       <span class="tag">#Uzbekistan</span>
       <span class="tag">#SuniyIntellekt</span>
-      <span class="tag">#AIStrategist</span>
     </div>
   </div>
 
-</main>
+  <div class="divider"></div>
+
+  <!-- MARKAZIY OSIYO RADARI -->
+  <div class="section-head">
+    <h2>🗺️ Markaziy Osiyo Radari</h2>
+  </div>
+
+  <div class="radar-section">
+    <div class="rh">
+      <div class="icon">📡</div>
+      <h3>Bugun maxsus signal yo'q</h3>
+    </div>
+    <p>
+      Bugungi manbalar asosan global AI tendentsiyalarini qamrab oldi.
+      Eslatma — kechagi muhim raqamlar:
+      <br/><br/>
+      <span class="stat-chip">O'zbekiston: dunyo 79-o'rin</span>
+      <span class="stat-chip">Toshkent: +121 pozitsiya</span>
+      <span class="stat-chip">CA startup: +81% o'sish</span>
+    </p>
+  </div>
+
+  <!-- STRATEGIK TAHLIL -->
+  <div class="section-head">
+    <h2>💡 Strategik Tahlil</h2>
+  </div>
+
+  <div class="insight-section">
+    <div class="ih">
+      <div class="icon">💡</div>
+      <h3>Bugungi eng katta trend</h3>
+    </div>
+    <p>
+      Bugungi manbalar bitta umumiy xabarni yetkazmoqda: <strong>AI hype davri tugab, haqiqat davri boshlandi.</strong> Uber budgetni 4 oyda tugatdi. BCG tadqiqoti AI dan foyda olish uchun qanday foydalanish muhimligini ko'rsatdi. AI iqtisodiyoti +2,600% o'smoqda — lekin rasmiy statistikada ko'rinmayapti.
+      <br/><br/>
+      <strong>O'zbekiston uchun imkoniyat:</strong> Yosh auditoriya "AI menga tahdid" emas, "AI mening kuchaytirgichim" deb tushunishi kerak. Bu tushunchani o'zbek tilida tushuntiradigan ovoz — hali yo'q.
+    </p>
+  </div>
+
+</div><!-- /wrap -->
 
 <!-- FOOTER -->
-<footer>
-  <div class="brand">⚡ AI BRIEFING</div>
-  <p>Zafar · AI Strategist · Toshkent, O'zbekiston</p>
-  <p style="margin-top:8px;">
-    Har kuni yangilanadi ·
-    <a href="#">Telegram kanaliga obuna bo'ling</a>
-  </p>
-</footer>
+<div class="wrap">
+  <footer>
+    <div class="brand">O'ZBEK <span>AI</span> DIGEST</div>
+    <p>
+      Zafar · AI Strategist · Toshkent, O'zbekiston<br/>
+      Har kuni yangilanadi ·
+      <a href="#">Telegram kanaliga obuna bo'ling</a>
+    </p>
+  </footer>
+</div>
 
 </body>
 </html>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
